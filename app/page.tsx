@@ -5,6 +5,9 @@ import TaskCard from '@/components/TaskCard';
 import SearchFilter from '@/components/SearchFilter';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface PageProps {
   searchParams: {
     status?: string;
@@ -39,7 +42,6 @@ export default async function DashboardPage({ searchParams }: PageProps) {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-white">Task Dashboard</h1>
@@ -53,10 +55,8 @@ export default async function DashboardPage({ searchParams }: PageProps) {
           </Link>
         </div>
 
-        {/* Filters */}
         <SearchFilter />
 
-        {/* Kanban Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {columns.map((status) => (
             <div
